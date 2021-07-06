@@ -17,3 +17,8 @@
 *.pdb
 *.CopyComplete
 x64/Release/monitor_dummy_server.vcxproj.FileListAbsolute.txt
+*.testlog
+*.manifest
+*.db-shm
+*.db-wal
+*.opendb

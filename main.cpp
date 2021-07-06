@@ -40,19 +40,7 @@ int main() {
 		std::vector<utility::string_t> path = web::uri::split_path(web::uri::decode(message.relative_uri().path()));
 		auto size = path.size();
 
-		if (size >= 3 && path[0] == U("file") && path[1] == U("info")) {
-			utility::string_t path_variable;
-			for (int i = 2; i < size; ++i) {
-				path_variable.append(path[i]);
-				path_variable.push_back(U('/'));
-			}
-
-			path_variable.pop_back();
-
-			std::wcout << U("PUT ") << path_variable << std::endl;
-			message.reply(web::http::status_codes::OK);
-		}
-		else if (size >= 3 && path[0] == U("folder") && path[1] == U("info")) {
+		if (size >= 3 && path[0] == U("item") && path[1] == U("info")) {
 			utility::string_t path_variable;
 			for (int i = 2; i < size; ++i) {
 				path_variable.append(path[i]);
@@ -85,7 +73,7 @@ int main() {
 			std::wcout << U("PATCH ") << path_variable << std::endl;
 			message.reply(web::http::status_codes::OK);
 		}
-		else if (size >= 3 && path[0] == U("file") && path[1] == U("info")) {
+		else if (size >= 3 && path[0] == U("item") && path[1] == U("info")) {
 			utility::string_t path_variable;
 			for (int i = 2; i < size; ++i) {
 				path_variable.append(path[i]);
