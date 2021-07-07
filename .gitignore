@@ -22,3 +22,6 @@ x64/Release/monitor_dummy_server.vcxproj.FileListAbsolute.txt
 *.db-shm
 *.db-wal
 *.opendb
+*.ilk
+x64/Debug/monitor_dummy_server.vcxproj.FileListAbsolute.txt
+*.idb
