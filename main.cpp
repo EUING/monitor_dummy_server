@@ -18,7 +18,22 @@ int main() {
 		std::vector<utility::string_t> path = web::uri::split_path(web::uri::decode(message.relative_uri().path()));
 		auto size = path.size();
 
-		if (size == 2 && path[0] == U("item") && path[1] == U("contain")) {
+		if (size == 3 && path[0] == U("item") && path[1] == U("info")) {
+			utility::string_t path_variable;
+			for (int i = 2; i < size; ++i) {
+				path_variable.append(path[i]);
+				path_variable.push_back(U('/'));
+			}
+			path_variable.pop_back();
+
+			web::json::value object = web::json::value::object();
+			object[U("name")] = web::json::value::string(path_variable);
+			object[U("size")] = web::json::value::number(0);
+			object[U("hash")] = web::json::value::string(U("hash"));
+
+			message.reply(web::http::status_codes::OK, object);
+		}
+		else if (size == 2 && path[0] == U("item") && path[1] == U("contain")) {
 			std::wcout << U("GET ") << "root" << std::endl;
 
 			web::json::value object = web::json::value::object();
