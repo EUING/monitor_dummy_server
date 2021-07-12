@@ -18,7 +18,7 @@ int main() {
 		std::vector<utility::string_t> path = web::uri::split_path(web::uri::decode(message.relative_uri().path()));
 		auto size = path.size();
 
-		if (size == 3 && path[0] == U("item") && path[1] == U("info")) {
+		if (size >= 3 && path[0] == U("item") && path[1] == U("info")) {
 			utility::string_t path_variable;
 			for (int i = 2; i < size; ++i) {
 				path_variable.append(path[i]);
